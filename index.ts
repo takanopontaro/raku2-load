@@ -14,7 +14,7 @@ async function req<T = any>(path: string) {
   } as TModule<T>;
 }
 
-export const load = async <T = any>(paths: string[]) => {
+export default async <T = any>(paths: string[]) => {
   const promises = (await globby(paths)).map(path => req<T>(path));
   return await Promise.all(promises);
-}
+};
