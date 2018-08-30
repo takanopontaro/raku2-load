@@ -15,7 +15,7 @@ async function req<T = any>(path: string) {
 }
 
 export default async <T = any>(paths: string[], options?: {}) => {
-  const sources = await globby(paths, { absolute: true, ...options });
+  const sources = await globby(paths, options);
   const promises = sources.map(path => req<T>(path));
   return await Promise.all(promises);
 };
