@@ -14,7 +14,7 @@ async function req<T = any>(path: string) {
   } as TModule<T>;
 }
 
-module.exports = async <T = any>(paths: string[], options?: any) => {
+export default async <T = any>(paths: string[], options?: any) => {
   const sources = options === false ? paths : await globby(paths, options);
   const promises = sources.map(path => req<T>(path));
   return await Promise.all(promises);
