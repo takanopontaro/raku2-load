@@ -1,6 +1,6 @@
 import globby from 'globby';
 
-import { Package } from './index.d';
+import { Options, Package } from './index.d';
 
 const _require = eval('require'); // tslint:disable-line
 
@@ -13,7 +13,7 @@ async function req<T = any>(path: string) {
 
 module.exports = async <T = any>(
   src: string | string[],
-  options?: {} | false
+  options?: Options | false
 ) => {
   const paths =
     options === false
