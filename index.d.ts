@@ -1,6 +1,6 @@
 declare function Raku2Load<T = any, U extends string | string[] = string>(
   src: U,
-  options?: Raku2Load.Options | false
+  options?: Raku2Load.Options
 ): U extends string
   ? Promise<Raku2Load.Package<T>>
   : Promise<Raku2Load.Package<T>[]>;
