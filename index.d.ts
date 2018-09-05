@@ -1,9 +1,9 @@
-declare function Raku2Load<T extends string | string[], U = any>(
-  src: T,
+declare function Raku2Load<T = any, U extends string | string[] = string>(
+  src: U,
   options?: Raku2Load.Options | false
-): T extends string
-  ? Promise<Raku2Load.Package<U>>
-  : Promise<Raku2Load.Package<U>[]>;
+): U extends string
+  ? Promise<Raku2Load.Package<T>>
+  : Promise<Raku2Load.Package<T>[]>;
 
 declare namespace Raku2Load {
   type Options = {
