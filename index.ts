@@ -23,11 +23,12 @@ module.exports = async <T = any>(src: string | string[], options?: Options) => {
     .filter(path => !!cwd || isLocalModule(path))
     .map(path => {
       return (async () => {
-        const ps = await globby(path, {
+        let ps = await globby(path, {
           ...options,
           absolute: true,
           expandDirectories: false
         });
+        if (ps.length === 0) ps = [cwd ? ndPath.resolve(cwd, path) : path];
         return ps.map(p => req<T>(p));
       })();
     });
